@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NaviPrism — Smart Link Utility</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- QRCode.js Library via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <h1>NaviPrism</h1>
+      <p>Fast, privacy-focused link management utilities.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- SECTION 1: UTM BUILDER -->
+    <section class="card" id="utm-section">
+      <h2>NaviPrism</h2>
+      <form id="utm-form" novalidate>
+        <div class="form-group">
+          <label for="utm-url">Destination URL *</label>
+          <input type="url" id="utm-url" placeholder="https://example.com" required>
+          <small class="error-msg" id="utm-url-error"></small>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="utm-source">Campaign Source *</label>
+            <input type="text" id="utm-source" placeholder="e.g. google, newsletter" required>
+            <small class="error-msg" id="utm-source-error"></small>
+          </div>
+          <div class="form-group">
+            <label for="utm-medium">Campaign Medium *</label>
+            <input type="text" id="utm-medium" placeholder="e.g. cpc, email" required>
+            <small class="error-msg" id="utm-medium-error"></small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="utm-name">Campaign Name *</label>
+            <input type="text" id="utm-name" placeholder="e.g. spring_sale" required>
+            <small class="error-msg" id="utm-name-error"></small>
+          </div>
+          <div class="form-group">
+            <label for="utm-term">Campaign Term (Optional)</label>
+            <input type="text" id="utm-term" placeholder="e.g. running+shoes">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="utm-content">Campaign Content (Optional)</label>
+          <input type="text" id="utm-content" placeholder="e.g. logolink, banner_ad">
+        </div>
+
+        <div class="btn-group">
+          <button type="submit" class="btn btn-primary">Generate UTM URL</button>
+          <button type="button" id="utm-reset-btn" class="btn btn-secondary">Clear Form</button>
+        </div>
+      </form>
+
+      <!-- Output Area -->
+      <div id="utm-result-container" class="result-container hidden">
+        <label>Generated URL:</label>
+        <div class="result-box">
+          <input type="text" id="utm-result-input" readonly>
+          <button id="utm-copy-btn" class="btn btn-small">Copy</button>
+        </div>
+        <span id="utm-copy-feedback" class="feedback-text hidden">Copied to clipboard!</span>
+      </div>
+    </section>
+
+    <!-- SECTION 2: QR CODE GENERATOR -->
+    <section class="card" id="qr-section">
+      <h2>QR Code Generator</h2>
+      <form id="qr-form" novalidate>
+        <div class="form-group">
+          <label for="qr-url">URL or Text *</label>
+          <input type="url" id="qr-url" placeholder="https://example.com" required>
+          <small class="error-msg" id="qr-url-error"></small>
+        </div>
+        <button type="submit" class="btn btn-primary">Generate QR Code</button>
+      </form>
+
+      <!-- Output Area -->
+      <div id="qr-result-container" class="result-container hidden">
+        <div id="qrcode" class="qr-preview"></div>
+        <div class="btn-group">
+          <button id="qr-download-btn" class="btn btn-secondary">Download PNG</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: RECENT ACTIVITY -->
+    <section class="card" id="history-section">
+      <div class="section-header">
+        <h2>Recent Activity</h2>
+        <button id="clear-history-btn" class="btn btn-danger btn-small">Clear All</button>
+      </div>
+      <div id="history-list" class="history-list">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 NaviPrism. All processing happens locally in your browser.</p>
+  </footer>
+
+  <!-- Module Script imports -->
+  <script src="js/utm.js"></script>
+  <script src="js/qr.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
